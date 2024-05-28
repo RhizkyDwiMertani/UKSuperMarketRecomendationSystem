@@ -9,11 +9,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 def load_data():
     # Load datasets from local paths
     all_data = pd.read_csv("alldata.csv")
-    return all_data
-
 all_data = load_data()
-
-
 
 @st.cache_data
 def prepare_data(all_data):
