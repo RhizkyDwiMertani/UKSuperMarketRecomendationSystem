@@ -8,29 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 @st.cache_data
 def load_data():
     # Load datasets from local paths
-    bm = pd.read_csv("C:/Users/P A V I L I O N/Downloads/dataset-5/BritishMart.csv")
-    cvf = pd.read_csv("C:/Users/P A V I L I O N/Downloads/dataset-5/CVFamz.csv")
-    cvv = pd.read_csv("C:/Users/P A V I L I O N/Downloads/dataset-5/CVanyMart.csv")
-    sm = pd.read_csv("C:/Users/P A V I L I O N/Downloads/dataset-5/ScottishMart.csv")
-    ukm = pd.read_csv("C:/Users/P A V I L I O N/Downloads/dataset-5/UKMart.csv")
-
-    bm.columns = ['nama_toko', 'harga_pound', 'harga_per_unit', 'unit', 'nama', 'kategori', 'brand_sendiri', 'tanggal']
-    cvf.columns = ['nama_toko', 'harga_pound', 'harga_per_unit', 'unit', 'nama', 'kategori', 'brand_sendiri', 'tanggal']
-    cvv = cvv.reindex(columns=['nama_toko', 'harga_pound', 'harga_per_unit', 'unit', 'nama', 'kategori', 'brand_sendiri', 'tanggal'])
-    sm.columns = ['nama_toko', 'harga_pound', 'harga_per_unit', 'unit', 'nama', 'kategori', 'brand_sendiri', 'tanggal']
-    ukm.columns = ['nama_toko', 'harga_pound', 'harga_per_unit', 'unit', 'nama', 'kategori', 'brand_sendiri', 'tanggal']
-    
-    all_data = pd.concat([bm, cvf, cvv, sm, ukm], ignore_index=True)
-    all_data = all_data.dropna()
-    all_data['tanggal'] = pd.to_datetime(all_data['tanggal'])
-
-    
-    # Mengidentifikasi dan menandai duplikat berdasarkan kolom 'nama', tetapi mempertahankan baris yang memiliki 'nama_toko' atau 'harga_per_unit' yang berbeda
-    all_data['is_duplicate'] = all_data.duplicated(subset=['nama', 'nama_toko', 'harga_per_unit'], keep=False)
-
-    # Menghapus duplikat hanya jika 'nama', 'nama_toko', dan 'harga_per_unit' semuanya sama
-    all_data = all_data[~(all_data['is_duplicate'] & all_data.duplicated(subset=['nama'], keep='first'))]
-
+    all_data = pd.read_csv("alldata.csv")
     return all_data
 
 all_data = load_data()
