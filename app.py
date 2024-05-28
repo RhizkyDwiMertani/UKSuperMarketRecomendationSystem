@@ -4,11 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Caching the data loading
-@st.cache_data
-def load_data():
-    # Load datasets from local paths
-    all_data = pd.read_csv("alldata.csv")
+all_data = pd.read_csv("alldata.csv")
 all_data = load_data()
 
 @st.cache_data
