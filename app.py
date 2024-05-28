@@ -5,7 +5,6 @@ from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 
 all_data = pd.read_csv("alldata.csv")
-all_data = load_data()
 
 @st.cache_data
 def prepare_data(all_data):
